@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "email": "lsv288@gmail.com",
+      "password": "$2a$10$3iBFlGwGpTQmqaGIba7kV.e01rTqNZhPC.Ob8b9bSmKV6en7/Bdj.",
+      "name": "Lavpreet Singh",
+      "id": 1
+    },
+    {
+      "email": "hello@gmail.com",
+      "password": "$2a$10$Ffq4P/KYXFWIfwBunF8/ee.ZKb5P6PBWQbUWbEUjVASPTPJXYxLLm",
+      "name": "hello",
+      "id": 2
+    },
+    {
+      "email": "hello123@gmail.com",
+      "password": "$2a$10$CX1zekIUqBtRvw3sy/BjzeI.4cx/aM1FYfweNls7DhFK0Uc/u9OmG",
+      "name": "hello",
+      "id": 3
+    }
+  ],
+  "Todo": [
+    {
+      "author": "hello",
+      "description": "lovesingh",
+      "done": false,
+      "id": 1
+    },
+    {
+      "author": "hello",
+      "author_mail": "hello@gmail.com",
+      "description": "hello",
+      "done": false,
+      "id": 2
+    }
+  ],
+  "InProgress": [],
+  "Done": []
+}

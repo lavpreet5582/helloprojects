@@ -1,0 +1,16 @@
+<div>
+    <mat-card class="mt-3">
+        <form [formGroup]="todoForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Task Name</mat-label>
+                <input formControlName="item" matInput placeholder="Task Name">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <!-- <mat-hint>Task Name</mat-hint> -->
+            </mat-form-field>
+            <button *ngIf="!data.item" (click)="addTask()" mat-raised-button color="primary" class="mx-2"
+                [disabled]="todoForm.invalid">Add</button>
+            <button *ngIf="data.item" (click)="updateTask()" mat-raised-button color="primary" class="mx-2"
+                [disabled]="todoForm.invalid">Update</button>
+        </form>
+    </mat-card>
+</div>

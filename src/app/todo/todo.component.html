@@ -1,0 +1,134 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" style="background:#303030;height: auto;min-height: 93vh;">
+            <!-- <div>
+                <mat-card class="mt-3">
+                    <form [formGroup]="todoForm">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Task Name</mat-label>
+                            <input formControlName="item" matInput placeholder="Task Name">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                            <mat-hint>Task Name</mat-hint>
+                        </mat-form-field>
+                        <button *ngIf="!isEditEnabled" (click)="addTask()" mat-raised-button color="primary"
+                            [disabled]="todoForm.invalid">Add</button>
+                        <button *ngIf="isEditEnabled" (click)="updateTask()" mat-raised-button color="primary"
+                            [disabled]="todoForm.invalid">Update</button>
+                    </form>
+                </mat-card>
+            </div> -->
+
+        </div>
+        <div class="col-md-9 mt-3">
+            <div cdkDropListGroup>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="example-container text-center">
+                            <h2 class="head-title">TO DO <span *ngIf="tasks.length > 0"> - {{tasks.length}}</span></h2>
+                            <button mat-raised-button class="w-100" (click)="openAddModal()"><mat-icon>add</mat-icon></button>
+                            <div cdkDropList [cdkDropListData]="tasks" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of tasks; let i = index" cdkDrag>
+                                    <mat-card class="example-card w-100 border ">
+                                        <mat-card-title class="pb-5 border-bottom">{{item.description}}</mat-card-title>
+                                        <!-- <mat-card-subtitle>{{item.assigned_to}}</mat-card-subtitle> -->
+                                        <mat-card-subtitle><h1>Author: {{item.author}}</h1></mat-card-subtitle>
+                                        <!-- <mat-card-content>
+                                          <p>{{item.description}}</p>
+                                        </mat-card-content> -->
+                                        <mat-card-actions>
+                                          <button mat-button (click)="editTask(item,i)"><mat-icon>edit</mat-icon></button>
+                                          <button mat-button (click)="deleteTask(item,'Todo')"><mat-icon>delete</mat-icon></button>
+                                        </mat-card-actions>
+                                      </mat-card>
+                                    <!-- {{item.description}}
+                                    <div class="box">
+                                        <button mat-raised-button (click)="deleteTask(item,'Todo')">
+                                            <mat-icon color="warn">delete</mat-icon>
+                                        </button>
+                                        <button mat-raised-button (click)="editTask(item,i)">
+                                            <mat-icon color="primary">edit</mat-icon>
+                                        </button> -->
+
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="example-container text-center">
+                            <h2 class="head-title">IN PROGRESS <span *ngIf="inprogress.length > 0"> - {{inprogress.length}}</span></h2>
+
+                            <div cdkDropList [cdkDropListData]="inprogress" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of inprogress;let i = index" cdkDrag>
+                                    <!-- {{item.description}} -->
+                                    <mat-card class="example-card w-100 border">
+                                        <mat-card-title class="pb-5 border-bottom">{{item.description}}</mat-card-title>
+                                        <mat-card-subtitle><h1>Author: {{item.author}}</h1></mat-card-subtitle>
+                                        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                                        <!-- <mat-card-content>
+                                          <p>{{item.description}}</p>
+                                        </mat-card-content> -->
+                                        <mat-card-actions>
+                                          <!-- <button mat-button><mat-icon>edit</mat-icon></button> -->
+                                          <button mat-button (click)="deleteTask(item,'InProgress')"><mat-icon>delete</mat-icon></button>
+                                        </mat-card-actions>
+                                      </mat-card>
+                                    <!-- <div class="box">
+                                        <button mat-raised-button (click)="deleteTask(item,'InProgress')">
+                                            <mat-icon color="warn">delete</mat-icon>
+                                        </button> -->
+                                        <!-- <button mat-raised-button (click)="editTask(item,i)">
+                                            <mat-icon color="primary">edit</mat-icon>
+                                        </button> -->
+
+                                    <!-- </div> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="example-container text-center">
+                            <h2 class="head-title">DONE <span *ngIf="done.length > 0"> - {{done.length}}</span></h2>
+
+                            <div cdkDropList [cdkDropListData]="done" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of done; let i = index" cdkDrag>
+                                    <!-- {{item.description}} -->
+                                    <!-- <div class="box">
+                                        <button mat-raised-button (click)="deleteTask(item,'Done')">
+                                            <mat-icon color="warn">delete</mat-icon>
+                                        </button>
+                                        <button mat-raised-button>
+                                            <mat-icon color="accent">check_circle</mat-icon>
+                                        </button>
+
+                                    </div> -->
+                                    <mat-card class="example-card w-100 border">
+                                        <mat-card-title class="pb-5 border-bottom">{{item.description}}</mat-card-title>
+                                        <mat-card-subtitle><h1>Author: {{item.author}}</h1></mat-card-subtitle>
+                                        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                                        <!-- <mat-card-content>
+                                          <p>{{item.description}}</p>
+                                        </mat-card-content> -->
+                                        <mat-card-actions>
+                                          <button mat-button (click)="deleteTask(item,'Done')"><mat-icon>delete</mat-icon></button>
+                                          <button mat-button color="accent"><mat-icon>check_circle</mat-icon></button>
+                                        </mat-card-actions>
+                                      </mat-card>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
